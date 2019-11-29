@@ -38,12 +38,16 @@ public class Matrix {
     }
     public static Matrix Inverse_Matrix(Matrix a)
     {
+        double x11 = a.x11;
+        double x12 = a.x12;
+        double x21 = a.x21;
+        double x22 = a.x22;
         double Def;
-        a.x11 = a.x22;
-        a.x12 = -a.x21;
-        a.x21 = -a.x12;
-        a.x22 = a.x11;
         Def = 1/Definer(a);
+        a.x11 = x22;
+        a.x12 = -x21;
+        a.x21 = -x12;
+        a.x22 = x11;
         Matrix c = Multiply(a,Def);
         return new Matrix(c.x11,c.x12,c.x21,c.x22);
     }
